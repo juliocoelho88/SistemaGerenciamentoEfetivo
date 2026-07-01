@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: gestao-efetivo-db
+    environment:
+      POSTGRES_DB: gestao_efetivo
+      POSTGRES_USER: gestao_efetivo
+      POSTGRES_PASSWORD: gestao_efetivo
+    ports:
+      - "5432:5432"
+    volumes:
+      - gestao-efetivo-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gestao_efetivo -d gestao_efetivo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  gestao-efetivo-db-data:

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><style>@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');*{box-sizing:border-box}body{margin:0}.app{min-height:100vh;display:flex;background:#f5f6f8;color:#16202e;font-family:'Public Sans',system-ui,sans-serif;font-size:14px;--accent:#2f5fd0}.mono{font-family:'IBM Plex Mono',monospace}.sidebar{width:240px;flex:none;background:#14233b;color:#cdd6e4;display:flex;flex-direction:column;gap:3px;padding:20px 14px;position:sticky;top:0;height:100vh}.brandbox{display:flex;align-items:center;gap:11px;padding:6px 8px 18px}.brandmark{width:34px;height:34px;border-radius:9px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none}.brandname{font-weight:700;font-size:15px;color:#fff;line-height:1.15}.brandsub{font-size:11px;color:#7e8ca6}.navlabel{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#6b7a96;padding:14px 10px 6px;font-weight:600}.navitem{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:9px;color:#9fb0c8;font-weight:500;font-size:14px;background:none;border:0;cursor:pointer;text-align:left;width:100%;font-family:inherit}.navitem:hover{background:rgba(255,255,255,.06);color:#e6ecf5}.navitem.on{background:var(--accent);color:#fff}.navicon{width:19px;height:19px;flex:none}.navcount{margin-left:auto;background:#c2453a;color:#fff;font-size:11px;font-weight:600;border-radius:20px;padding:1px 7px}.sidefoot{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 8px 4px;border-top:1px solid rgba(255,255,255,.08)}.fname{color:#e6ecf5;font-weight:600;font-size:13px}.main{flex:1;height:100vh;overflow:auto}.topbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e6e9ee;padding:17px 30px;display:flex;align-items:center;gap:18px}.ttitle{font-size:19px;font-weight:700}.tsub{font-size:13px;color:#5b6675;margin-top:2px}.search{position:relative;flex:1;max-width:400px}.search input{width:100%;padding:9px 12px 9px 36px;border:1px solid #dfe3ea;border-radius:9px;font-size:14px;font-family:inherit;background:#f7f8fa;color:#16202e}.search input:focus{outline:none;border-color:var(--accent);background:#fff}.searchicon{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:#8b97a8}.content{padding:24px 30px 60px}.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}.sel{padding:8px 11px;border:1px solid #dfe3ea;border-radius:9px;font-size:13px;font-family:inherit;background:#fff;color:#16202e;cursor:pointer}.btn{padding:8px 13px;border:1px solid #dfe3ea;border-radius:9px;background:#fff;font-size:13px;font-weight:500;font-family:inherit;color:#37414f;cursor:pointer}.btn:hover{background:#f2f4f7}.card{background:#fff;border:1px solid #e6e9ee;border-radius:13px;box-shadow:0 1px 2px rgba(20,35,59,.04);overflow:hidden}.ptable{width:100%;border-collapse:collapse}.ptable th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#7a8696;font-weight:600;padding:12px 16px;border-bottom:1px solid #eceef2}.ptable td{padding:11px 16px;border-bottom:1px solid #f0f2f5;font-size:13.5px;vertical-align:middle}.prow{cursor:pointer}.prow:hover{background:#f7f9fc}.who{display:flex;align-items:center;gap:11px}.avatar{width:36px;height:36px;border-radius:9px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;flex:none}.av0{background:var(--accent)}.av1{background:#1f9d57}.av2{background:#b7791f}.av3{background:#7c4dd6}.av4{background:#0e8f8a}.av5{background:#c2453a}.av6{background:#3a6ea5}.pname{font-weight:600;font-size:14px;line-height:1.25}.pmat{font-size:12px;color:#7a8696;margin-top:2px}.who .pname{white-space:nowrap}.chip{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}.chip-ok{background:#e6f5ec;color:#15803d}.chip-warn{background:#fdf2e2;color:#b06a12}.chip-bad{background:#fde8e6;color:#c2453a}.chip-neutral{background:#eef0f3;color:#5b6675}.chip-info{background:#e8f0fd;color:var(--accent)}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.muted{color:#5b6675}.chev{width:16px;height:16px;color:#b7c0cc}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.statgrid3{grid-template-columns:repeat(3,1fr)}.stat{padding:16px 18px}.statk{font-size:12px;color:#7a8696;font-weight:500}.statv{font-size:26px;font-weight:700;margin-top:4px}.statv.bad{color:#c2453a}.statv.warn{color:#b06a12}.fichahead{display:flex;align-items:center;gap:18px;padding:22px 24px}.bigavatar{width:64px;height:64px;border-radius:14px;font-size:22px}.tabs{display:flex;gap:4px;border-bottom:1px solid #e6e9ee;padding:0 20px}.tab{padding:13px 14px;font-size:14px;font-weight:600;color:#7a8696;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit;margin-bottom:-1px}.tab:hover{color:#37414f}.tab.on{color:var(--accent);border-bottom-color:var(--accent)}.relgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:20px 22px}.span2{grid-column:span 2}.sectitle{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#7a8696;margin:0 0 14px}.barrow{display:flex;align-items:center;gap:14px;margin-bottom:11px}.barlabel{width:175px;font-size:13px;flex:none}.bartrack{flex:1;height:9px;background:#eef0f3;border-radius:6px;overflow:hidden}.barfill{height:100%;background:var(--accent);border-radius:6px}.barval{width:34px;text-align:right;font-size:13px;font-weight:600;flex:none}.empty{padding:60px 20px;text-align:center;color:#7a8696}.backbtn{display:flex;align-items:center;gap:7px;color:#5b6675;background:none;border:0;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:0}.backbtn:hover{color:#16202e}.headrow{display:flex;align-items:center;gap:12px}.compact .ptable td{padding:7px 16px}.compact .avatar{width:30px;height:30px;font-size:12px}.perfilgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.perfilcard{padding:18px 18px 16px;position:relative}.perfilbar{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:13px 0 0 13px}.pf0{background:#c2453a}.pf1{background:var(--accent)}.pf2{background:#b7791f}.pf3{background:#1f9d57}.perfilname{font-weight:700;font-size:15px}.perfilqtd{font-size:12px;color:#7a8696;font-weight:600;margin-top:2px}.perfildesc{font-size:12.5px;color:#5b6675;line-height:1.45;margin:11px 0 12px;min-height:54px}.perfilscope{display:flex;align-items:center;gap:7px;font-size:12px;color:#37414f;border-top:1px solid #f0f2f5;padding-top:11px}.perfilscope svg{width:14px;height:14px;color:#8b97a8;flex:none}.matrix th:first-child,.matrix td:first-child{position:sticky;left:0;background:#fff}.matrix td{font-size:13px}.lvl{display:inline-flex;align-items:center;justify-content:center;padding:3px 10px;border-radius:7px;font-size:12px;font-weight:600;white-space:nowrap}.lvl-total{background:#e6f5ec;color:#15803d}.lvl-edit{background:#e8f0fd;color:var(--accent)}.lvl-ver{background:#eef0f3;color:#5b6675}.lvl-none{color:#c2cad4}.roleselect{padding:5px 9px;border:1px solid #dfe3ea;border-radius:8px;font-size:12.5px;font-family:inherit;background:#fff;color:#16202e;cursor:pointer;font-weight:500}.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:#5b6675}.legend .lvl{margin-right:6px}.legenditem{display:flex;align-items:center}</style></helmet>
+<div class="app {{ densCls }}" style="--accent: {{ accent }}">
+<aside class="sidebar">
+<div class="brandbox"><div class="brandmark">GE</div><div><div class="brandname">Gestão de Efetivo</div><div class="brandsub">Polícia · Pessoal</div></div></div>
+<div class="navlabel">Menu</div>
+<button class="navitem {{ navLista }}" onClick="{{ goLista }}"><svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.3"></circle><path d="M2.8 19.2c.6-3.4 3-5.2 6.2-5.2s5.6 1.8 6.2 5.2"></path><path d="M16.5 5.2a3.1 3.1 0 0 1 0 6"></path><path d="M18 19.2c-.3-2.2-1.1-3.9-2.4-5"></path></svg>Efetivo</button>
+<button class="navitem {{ navVenc }}" onClick="{{ goVenc }}"><svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.3V12l3.3 2"></path></svg>Vencimentos<sc-if value="{{ totalAlert }}" hint-placeholder-val="{{ false }}"><span class="navcount">{{ totalAlert }}</span></sc-if></button>
+<button class="navitem {{ navRel }}" onClick="{{ goRel }}"><svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"></path><rect x="7.5" y="11" width="2.6" height="6"></rect><rect x="12.5" y="7" width="2.6" height="10"></rect><rect x="17.5" y="13" width="2.6" height="4"></rect></svg>Relatórios</button>
+<div class="navlabel">Administração</div>
+<button class="navitem {{ navAcc }}" onClick="{{ goAcc }}"><svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7l7 2.6v5.1c0 4.6-3 8-7 9.2-4-1.2-7-4.6-7-9.2V5.3z"></path><path d="M9.3 12l1.9 1.9 3.6-3.7"></path></svg>Acessos</button>
+<div class="sidefoot"><div class="avatar av0" style="width:32px;height:32px">AD</div><div><div class="fname">Administrador</div><div class="brandsub">Acesso total</div></div></div>
+</aside>
+<main class="main">
+<sc-if value="{{ isLista }}" hint-placeholder-val="{{ true }}">
+<div class="topbar"><div><div class="ttitle">Efetivo</div><div class="tsub">{{ total }} policiais cadastrados</div></div><div class="search"><svg class="searchicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><input placeholder="Buscar por nome, matrícula ou posto…" value="{{ q }}" onChange="{{ onSearch }}"></div></div>
+<div class="content">
+<div class="toolbar"><select class="sel" value="{{ fLot }}" onChange="{{ onLot }}"><option value="">Todas as lotações</option><sc-for list="{{ lotOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select><select class="sel" value="{{ fSit }}" onChange="{{ onSit }}"><option value="">Todas as situações</option><sc-for list="{{ sitOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select><button class="btn" onClick="{{ limpar }}">Limpar filtros</button><span class="muted" style="margin-left:auto;font-size:13px">{{ nPessoas }} resultado(s)</span></div>
+<div class="card">
+<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}"><table class="ptable"><thead><tr><th>Policial</th><th>Posto / Grad.</th><th>Lotação</th><th>Situação</th><th>Validades</th><th></th></tr></thead><tbody><sc-for list="{{ pessoas }}" as="p" hint-placeholder-count="9"><tr class="prow" onClick="{{ p.open }}"><td><div class="who"><div class="avatar {{ p.corCls }}">{{ p.iniciais }}</div><div><div class="pname">{{ p.nome }}</div><div class="pmat mono">RE {{ p.matricula }}</div></div></div></td><td>{{ p.posto }}</td><td>{{ p.lotacao }}</td><td><span class="chip {{ p.situacaoCls }}"><span class="dot"></span>{{ p.situacao }}</span></td><td><span class="chip {{ p.chipCls }}">{{ p.chipLabel }}</span></td><td><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></td></tr></sc-for></tbody></table></sc-if>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div class="empty">Nenhum policial encontrado com os filtros aplicados.</div></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isFicha }}" hint-placeholder-val="{{ false }}">
+<div class="topbar"><button class="backbtn" onClick="{{ voltar }}"><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Voltar ao efetivo</button></div>
+<div class="content">
+<div class="card fichahead"><div class="avatar bigavatar {{ selected.corCls }}">{{ selected.iniciais }}</div><div class="f1"><div class="headrow"><div class="ttitle">{{ selected.nome }}</div><span class="chip {{ selected.situacaoCls }}"><span class="dot"></span>{{ selected.situacao }}</span></div><div class="muted" style="margin-top:5px">{{ selected.posto }} · {{ selected.lotacao }} · <span class="mono">RE {{ selected.matricula }}</span></div></div></div>
+<div class="statgrid" style="margin-top:18px"><div class="card stat"><div class="statk">Tempo de serviço</div><div class="statv">{{ selected.anos }}</div></div><div class="card stat"><div class="statk">Cursos concluídos</div><div class="statv">{{ selected.nCursos }}</div></div><div class="card stat"><div class="statk">Habilitações</div><div class="statv">{{ selected.nHab }}</div></div><div class="card stat"><div class="statk">Estágios</div><div class="statv">{{ selected.nEst }}</div></div></div>
+<div class="card"><div class="tabs"><button class="tab {{ tabCursosCls }}" onClick="{{ setCursos }}">Cursos</button><button class="tab {{ tabHabCls }}" onClick="{{ setHab }}">Habilitações</button><button class="tab {{ tabEstCls }}" onClick="{{ setEst }}">Estágios</button></div>
+<sc-if value="{{ tabCursos }}" hint-placeholder-val="{{ true }}"><table class="ptable"><thead><tr><th>Curso</th><th>Instituição</th><th>C.H.</th><th>Conclusão</th><th>Validade</th><th>Status</th></tr></thead><tbody><sc-for list="{{ selected.cursos }}" as="c" hint-placeholder-count="3"><tr><td><div class="pname">{{ c.nome }}</div></td><td class="muted">{{ c.inst }}</td><td class="mono">{{ c.carga }}</td><td class="mono">{{ c.conclusao }}</td><td class="mono">{{ c.validade }}</td><td><span class="chip {{ c.stCls }}">{{ c.stLabel }}</span></td></tr></sc-for></tbody></table></sc-if>
+<sc-if value="{{ tabHab }}" hint-placeholder-val="{{ false }}"><table class="ptable"><thead><tr><th>Habilitação</th><th>Validade</th><th>Status</th></tr></thead><tbody><sc-for list="{{ selected.habilitacoes }}" as="h" hint-placeholder-count="3"><tr><td><div class="pname">{{ h.nome }}</div></td><td class="mono">{{ h.validade }}</td><td><span class="chip {{ h.stCls }}">{{ h.stLabel }}</span></td></tr></sc-for></tbody></table></sc-if>
+<sc-if value="{{ tabEst }}" hint-placeholder-val="{{ false }}"><table class="ptable"><thead><tr><th>Estágio</th><th>Período</th><th>Local</th><th>Avaliação</th><th>Status</th></tr></thead><tbody><sc-for list="{{ selected.estagios }}" as="e" hint-placeholder-count="2"><tr><td><div class="pname">{{ e.nome }}</div></td><td class="mono">{{ e.periodo }}</td><td class="muted">{{ e.local }}</td><td>{{ e.aval }}</td><td><span class="chip {{ e.stCls }}">{{ e.stLabel }}</span></td></tr></sc-for></tbody></table></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isVenc }}" hint-placeholder-val="{{ false }}">
+<div class="topbar"><div><div class="ttitle">Vencimentos</div><div class="tsub">Cursos e habilitações vencidos ou a vencer em até 90 dias</div></div></div>
+<div class="content">
+<div class="statgrid statgrid3"><div class="card stat"><div class="statk">Vencidos</div><div class="statv bad">{{ vVencidos }}</div></div><div class="card stat"><div class="statk">Vencendo (≤ 90 dias)</div><div class="statv warn">{{ vVencendo }}</div></div><div class="card stat"><div class="statk">Policiais afetados</div><div class="statv">{{ totalAlert }}</div></div></div>
+<div class="card"><table class="ptable"><thead><tr><th>Policial</th><th>Tipo</th><th>Item</th><th>Validade</th><th>Status</th></tr></thead><tbody><sc-for list="{{ venc }}" as="v" hint-placeholder-count="9"><tr class="prow" onClick="{{ v.open }}"><td><div class="who"><div class="avatar {{ v.corCls }}">{{ v.iniciais }}</div><div><div class="pname">{{ v.pessoa }}</div><div class="pmat">{{ v.posto }} · {{ v.lotacao }}</div></div></div></td><td>{{ v.tipo }}</td><td>{{ v.nome }}</td><td class="mono">{{ v.validade }}</td><td><span class="chip {{ v.stCls }}">{{ v.stLabel }}</span></td></tr></sc-for></tbody></table></div>
+</div>
+</sc-if>
+<sc-if value="{{ isRel }}" hint-placeholder-val="{{ false }}">
+<div class="topbar"><div><div class="ttitle">Relatórios</div><div class="tsub">Estatísticas do efetivo · {{ total }} policiais</div></div></div>
+<div class="content"><div class="relgrid">
+<div class="card panel"><h3 class="sectitle">Por lotação</h3><sc-for list="{{ porLot }}" as="x" hint-placeholder-count="6"><div class="barrow"><div class="barlabel">{{ x.k }}</div><div class="bartrack"><div class="barfill" style="width: {{ x.pct }}%"></div></div><div class="barval">{{ x.v }}</div></div></sc-for></div>
+<div class="card panel"><h3 class="sectitle">Por situação</h3><sc-for list="{{ porSit }}" as="x" hint-placeholder-count="5"><div class="barrow"><div class="barlabel">{{ x.k }}</div><div class="bartrack"><div class="barfill" style="width: {{ x.pct }}%"></div></div><div class="barval">{{ x.v }}</div></div></sc-for></div>
+<div class="card panel span2"><h3 class="sectitle">Por posto / graduação</h3><sc-for list="{{ porPosto }}" as="x" hint-placeholder-count="9"><div class="barrow"><div class="barlabel">{{ x.k }}</div><div class="bartrack"><div class="barfill" style="width: {{ x.pct }}%"></div></div><div class="barval">{{ x.v }}</div></div></sc-for></div>
+</div></div>
+</sc-if>
+<sc-if value="{{ isAcc }}" hint-placeholder-val="{{ false }}">
+<div class="topbar"><div><div class="ttitle">Acessos</div><div class="tsub">Perfis, permissões e usuários do sistema</div></div><button class="btn" style="margin-left:auto" onClick="{{ noop }}">+ Novo usuário</button></div>
+<div class="content">
+<h3 class="sectitle">Perfis de acesso</h3>
+<div class="perfilgrid"><sc-for list="{{ perfis }}" as="p" hint-placeholder-count="4"><div class="card perfilcard"><div class="perfilbar {{ p.barCls }}"></div><div class="perfilname">{{ p.nome }}</div><div class="perfilqtd">{{ p.qtd }} usuário(s)</div><div class="perfildesc">{{ p.desc }}</div><div class="perfilscope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3.5 12h17M12 3.2c2.4 2.4 3.5 5.5 3.5 8.8s-1.1 6.4-3.5 8.8c-2.4-2.4-3.5-5.5-3.5-8.8s1.1-6.4 3.5-8.8z"></path></svg>{{ p.escopo }}</div></div></sc-for></div>
+<h3 class="sectitle">Matriz de permissões</h3>
+<div class="card" style="overflow-x:auto;margin-bottom:8px"><table class="ptable matrix"><thead><tr><th>Perfil</th><sc-for list="{{ modulos }}" as="m" hint-placeholder-count="6"><th>{{ m }}</th></sc-for></tr></thead><tbody><sc-for list="{{ matriz }}" as="r" hint-placeholder-count="4"><tr><td><div class="pname">{{ r.nome }}</div></td><sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="6"><td><span class="lvl {{ c.cls }}">{{ c.label }}</span></td></sc-for></tr></sc-for></tbody></table></div>
+<div class="legend"><div class="legenditem"><span class="lvl lvl-total">Total</span>criar, editar e excluir</div><div class="legenditem"><span class="lvl lvl-edit">Editar</span>criar e alterar</div><div class="legenditem"><span class="lvl lvl-ver">Ver</span>somente leitura</div><div class="legenditem"><span class="lvl lvl-none">—</span>sem acesso</div></div>
+<h3 class="sectitle" style="margin-top:26px">Usuários do sistema</h3>
+<div class="card"><table class="ptable"><thead><tr><th>Usuário</th><th>Perfil</th><th>Escopo / Lotação</th><th>Último acesso</th><th>Situação</th></tr></thead><tbody><sc-for list="{{ usuarios }}" as="u" hint-placeholder-count="8"><tr><td><div class="who"><div class="avatar {{ u.corCls }}">{{ u.iniciais }}</div><div><div class="pname">{{ u.nome }}</div><div class="pmat mono">{{ u.login }}</div></div></div></td><td><select class="roleselect" value="{{ u.perfil }}" onChange="{{ u.onPerfil }}"><sc-for list="{{ perfilNomes }}" as="pn" hint-placeholder-count="4"><option value="{{ pn }}">{{ pn }}</option></sc-for></select></td><td class="muted">{{ u.escopo }}</td><td class="mono muted">{{ u.ultimo }}</td><td><span class="chip {{ u.statusCls }}"><span class="dot"></span>{{ u.status }}</span></td></tr></sc-for></tbody></table></div>
+</div>
+</sc-if>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f5fd0&quot;,&quot;options&quot;:[&quot;#2f5fd0&quot;,&quot;#1f6f4a&quot;,&quot;#7c3aed&quot;,&quot;#0e7c8a&quot;,&quot;#b02a37&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Aparência&quot;},&quot;densidade&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Confortável&quot;,&quot;options&quot;:[&quot;Confortável&quot;,&quot;Compacto&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Aparência&quot;}}">
+class Component extends DCLogic {
+  state = { view:'lista', q:'', fLot:'', fSit:'', selectedId:null, fichaTab:'cursos' };
+
+  rng(seed){ let s=seed>>>0; return ()=>{ s=(s+0x6D2B79F5)>>>0; let t=Math.imul(s^(s>>>15),1|s); t=(t+Math.imul(t^(t>>>7),61|t))^t; return ((t^(t>>>14))>>>0)/4294967296; }; }
+
+  build(){
+    const rnd=this.rng(20260630);
+    const pick=a=>a[Math.floor(rnd()*a.length)];
+    const ri=(a,b)=>a+Math.floor(rnd()*(b-a+1));
+    const today=new Date(2026,5,30); const day=86400000;
+    const z=n=>String(n).padStart(2,'0');
+    const fmt=d=>z(d.getDate())+'/'+z(d.getMonth()+1)+'/'+d.getFullYear();
+    const addD=n=>new Date(today.getTime()+n*day);
+    const status=d=>{ const diff=Math.round((d-today)/day); if(diff<0) return {cls:'chip-bad',label:'Vencido'}; if(diff<=90) return {cls:'chip-warn',label:'Vencendo'}; return {cls:'chip-ok',label:'Válido'}; };
+    const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(rnd()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+    const firsts=['Carlos','Ana','Marcos','Juliana','Rafael','Patrícia','Bruno','Fernanda','Diego','Camila','Eduardo','Larissa','Felipe','Mariana','Rodrigo','Tatiane','Gustavo','Aline','Leandro','Vanessa','Thiago','Priscila','André','Renata','Vinícius','Daniela','Marcelo','Bianca','Paulo','Letícia'];
+    const lasts=['Silva','Santos','Oliveira','Souza','Lima','Pereira','Costa','Almeida','Ferreira','Rodrigues','Gomes','Martins','Araújo','Ribeiro','Carvalho','Barbosa','Nascimento','Moreira','Cardoso','Teixeira'];
+    const postos=[{n:'Soldado',a:'Sd',w:9},{n:'Cabo',a:'Cb',w:6},{n:'3º Sargento',a:'3º Sgt',w:4},{n:'2º Sargento',a:'2º Sgt',w:3},{n:'1º Sargento',a:'1º Sgt',w:2},{n:'Subtenente',a:'S Ten',w:1},{n:'2º Tenente',a:'2º Ten',w:2},{n:'1º Tenente',a:'1º Ten',w:1},{n:'Capitão',a:'Cap',w:1},{n:'Major',a:'Maj',w:1},{n:'Tenente-Coronel',a:'TC',w:1},{n:'Coronel',a:'Cel',w:1}];
+    const postoPool=[]; postos.forEach(p=>{ for(let i=0;i<p.w;i++) postoPool.push(p); });
+    const lotacoes=['1º BPM','5º BPM','12º BPM','CPTran','ROTAM','BOPE','Cia Pol. Ambiental','Rádio Patrulha','Corregedoria','Academia de Polícia'];
+    const sits=[{n:'Ativo',c:'chip-ok',w:9},{n:'Férias',c:'chip-info',w:1},{n:'Licença médica',c:'chip-warn',w:1},{n:'Afastado',c:'chip-bad',w:1},{n:'Reserva',c:'chip-neutral',w:1}];
+    const sitPool=[]; sits.forEach(x=>{ for(let i=0;i<x.w;i++) sitPool.push(x); });
+    const cursoCat=[{n:'Curso de Formação de Praças',h:1200},{n:'Policiamento Comunitário',h:80},{n:'Armamento e Tiro Defensivo',h:60},{n:'Direção Defensiva e Evasiva',h:40},{n:'Abordagem e Revista Pessoal',h:30},{n:'Atendimento Pré-Hospitalar',h:48},{n:'Gerenciamento de Crises',h:90},{n:'Patrulhamento Tático',h:120},{n:'Uso Diferenciado da Força',h:40},{n:'Inteligência Policial',h:160}];
+    const habCat=['CNH Categoria B','CNH Categoria D','Condutor de Viatura Operacional','Operador de Armamento Letal','Operador de Taser','Operações Especiais','Piloto de Drone (ANAC)','Motociclista Operacional'];
+    const estCat=['Estágio Probatório','Estágio Supervisionado de Praças','Estágio Operacional','Estágio de Adaptação'];
+    const inst=['APMBB','CFAP','Diretoria de Ensino','EAD-PM','CIOSP'];
+    const avals=['Apto','Apto','Apto','Recomendado'];
+
+    const people=[];
+    for(let i=0;i<60;i++){
+      const fn=pick(firsts), ln1=pick(lasts), ln2=pick(lasts);
+      const nome=fn+' '+ln1+' '+ln2;
+      const posto=pick(postoPool), sit=pick(sitPool), lot=pick(lotacoes);
+      const dvPool='0123456789A';
+      const matricula=String(ri(100,999))+'.'+String(ri(100,999))+'-'+dvPool[Math.floor(rnd()*dvPool.length)];
+      const anos=ri(1,29);
+      const cs=shuffle(cursoCat).slice(0,ri(2,5)).map(c=>{
+        const concl=addD(-ri(60,3000));
+        const val=rnd()<0.5?addD(ri(-150,500)):null;
+        const st=val?status(val):{cls:'chip-neutral',label:'Concluído'};
+        return {nome:c.n,carga:c.h+'h',inst:pick(inst),conclusao:fmt(concl),validade:val?fmt(val):'—',stCls:st.cls,stLabel:st.label,_val:val};
+      });
+      const hs=shuffle(habCat).slice(0,ri(1,4)).map(h=>{
+        const val=addD(ri(-180,560)); const st=status(val);
+        return {nome:h,validade:fmt(val),stCls:st.cls,stLabel:st.label,_val:val};
+      });
+      const es=shuffle(estCat).slice(0,ri(1,2)).map(e=>{
+        const ini=addD(-ri(200,1500)); const andamento=rnd()<0.22; const fim=addD(-ri(0,180));
+        return {nome:e,periodo:fmt(ini)+' – '+(andamento?'em andamento':fmt(fim)),local:pick(lotacoes),stCls:andamento?'chip-info':'chip-ok',stLabel:andamento?'Em andamento':'Concluído',aval:andamento?'—':pick(avals)};
+      });
+      const alertItems=hs.concat(cs.filter(c=>c._val));
+      const venc=alertItems.filter(x=>x.stLabel==='Vencido').length;
+      const venk=alertItems.filter(x=>x.stLabel==='Vencendo').length;
+      let chip; if(venc>0) chip={cls:'chip-bad',label:venc+(venc>1?' vencidos':' vencido')}; else if(venk>0) chip={cls:'chip-warn',label:venk+' vencendo'}; else chip={cls:'chip-ok',label:'Em dia'};
+      people.push({ id:i, nome, posto:posto.n, postoAbrev:posto.a, situacao:sit.n, situacaoCls:sit.c, lotacao:lot, matricula, anos:anos+' anos', iniciais:(fn[0]+ln1[0]).toUpperCase(), corCls:'av'+(i%7), cursos:cs, habilitacoes:hs, estagios:es, chipCls:chip.cls, chipLabel:chip.label, nCursos:cs.length, nHab:hs.length, nEst:es.length, _venc:venc, _venk:venk });
+    }
+    return people;
+  }
+
+  openFicha(id){ this.setState({ view:'ficha', selectedId:id, fichaTab:'cursos' }); }
+
+  accessData(){
+    const perfis=[
+      {nome:'Administrador', qtd:3, barCls:'pf0', desc:'Controle total do sistema, incluindo gestão de acessos, configurações e todos os módulos.', escopo:'Toda a corporação'},
+      {nome:'Gestor de Unidade', qtd:24, barCls:'pf1', desc:'Gerencia o efetivo, validades e registros da própria lotação. Não acessa outras unidades.', escopo:'Lotação vinculada'},
+      {nome:'Instrutor / Ensino', qtd:12, barCls:'pf2', desc:'Lança e atualiza cursos, estágios e habilitações do efetivo. Sem edição de dados funcionais.', escopo:'Módulo de formação'},
+      {nome:'Policial', qtd:961, barCls:'pf3', desc:'Consulta a própria ficha, validades e documentos pessoais. Somente leitura do próprio registro.', escopo:'Registro individual'}
+    ];
+    const modulos=['Efetivo','Cursos & Estágios','Habilitações','Vencimentos','Relatórios','Gestão de Acessos'];
+    const L={t:{cls:'lvl-total',label:'Total'},e:{cls:'lvl-edit',label:'Editar'},v:{cls:'lvl-ver',label:'Ver'},n:{cls:'lvl-none',label:'—'}};
+    const grid=[
+      ['t','t','t','t','t','t'],
+      ['e','e','e','v','v','n'],
+      ['v','t','t','v','v','n'],
+      ['v','v','v','n','n','n']
+    ];
+    const matriz=perfis.map((p,i)=>({ nome:p.nome, cells:grid[i].map(k=>L[k]) }));
+    const usuarios=[
+      {nome:'Cel. Roberto Andrade', perfil:'Administrador', escopo:'Comando-Geral', ultimo:'01/07/2026 08:12', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'Maj. Sandra Vasconcelos', perfil:'Gestor de Unidade', escopo:'1º BPM', ultimo:'30/06/2026 17:40', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'Cap. Douglas Freitas', perfil:'Gestor de Unidade', escopo:'ROTAM', ultimo:'01/07/2026 07:55', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'1º Sgt. Mônica Peixoto', perfil:'Instrutor / Ensino', escopo:'Academia de Polícia', ultimo:'29/06/2026 14:03', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'Sd. Wesley Marinho', perfil:'Policial', escopo:'5º BPM', ultimo:'28/06/2026 21:17', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'2º Ten. Cláudia Rangel', perfil:'Gestor de Unidade', escopo:'12º BPM', ultimo:'25/06/2026 09:30', status:'Ativo', statusCls:'chip-ok'},
+      {nome:'Cb. Igor Tavares', perfil:'Policial', escopo:'BOPE', ultimo:'12/05/2026 19:44', status:'Inativo', statusCls:'chip-neutral'},
+      {nome:'Sgt. Priscila Nunes', perfil:'Instrutor / Ensino', escopo:'CFAP', ultimo:'30/06/2026 11:22', status:'Ativo', statusCls:'chip-ok'}
+    ];
+    usuarios.forEach((u,i)=>{ const parts=u.nome.replace(/^[^ ]+\.?\s/,'').split(' '); u.iniciais=(parts[0][0]+(parts[1]?parts[1][0]:parts[0][1])).toUpperCase(); u.corCls='av'+(i%7); u.login=u.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/^[^ ]+ /,'').replace(/ /g,'.'); });
+    return { perfis, modulos, matriz, usuarios, perfilNomes:perfis.map(p=>p.nome) };
+  }
+
+  renderVals(){
+    if(!this._p) this._p=this.build();
+    const s=this.state;
+    let list=this._p.slice();
+    if(s.fLot) list=list.filter(p=>p.lotacao===s.fLot);
+    if(s.fSit) list=list.filter(p=>p.situacao===s.fSit);
+    if(s.q){ const q=s.q.toLowerCase(); list=list.filter(p=>p.nome.toLowerCase().includes(q)||p.matricula.includes(q)||p.posto.toLowerCase().includes(q)); }
+    const pessoas=list.map(p=>Object.assign({},p,{ open:()=>this.openFicha(p.id) }));
+    const lotOpts=[...new Set(this._p.map(p=>p.lotacao))].sort();
+    const sitOpts=[...new Set(this._p.map(p=>p.situacao))];
+    const selected=this._p.find(p=>p.id===s.selectedId)||null;
+    const totalAlert=this._p.filter(p=>p._venc>0||p._venk>0).length;
+
+    let venc=[];
+    this._p.forEach(p=>{
+      const push=(tipo,it)=>{ if(it.stLabel==='Vencido'||it.stLabel==='Vencendo') venc.push({ pessoa:p.nome, posto:p.postoAbrev, lotacao:p.lotacao, tipo, nome:it.nome, validade:it.validade, stCls:it.stCls, stLabel:it.stLabel, _d:it._val, iniciais:p.iniciais, corCls:p.corCls, open:()=>this.openFicha(p.id) }); };
+      p.habilitacoes.forEach(h=>push('Habilitação',h));
+      p.cursos.forEach(c=>{ if(c._val) push('Curso',c); });
+    });
+    venc.sort((a,b)=>a._d-b._d);
+    const vVencidos=venc.filter(v=>v.stLabel==='Vencido').length;
+    const vVencendo=venc.filter(v=>v.stLabel==='Vencendo').length;
+
+    const group=key=>{ const m={}; this._p.forEach(p=>{ m[p[key]]=(m[p[key]]||0)+1; }); return Object.entries(m).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v); };
+    const withPct=arr=>{ const mx=Math.max(...arr.map(x=>x.v),1); arr.forEach(x=>x.pct=Math.round(x.v/mx*100)); return arr; };
+    const porLot=withPct(group('lotacao')), porSit=withPct(group('situacao')), porPosto=withPct(group('posto'));
+
+    const acc=this.accessData();
+    const roleOverride=s.roleOverride||{};
+    const usuarios=acc.usuarios.map((u,i)=>Object.assign({},u,{ perfil:roleOverride[i]??u.perfil, onPerfil:e=>this.setState(st=>({ roleOverride:Object.assign({},st.roleOverride,{[i]:e.target.value}) })) }));
+
+    return {
+      accent:this.props.accent??'#2f5fd0',
+      densCls:(this.props.densidade??'Confortável')==='Compacto'?'compact':'',
+      navLista:s.view==='lista'?'on':'', navVenc:s.view==='vencimentos'?'on':'', navRel:s.view==='relatorios'?'on':'', navAcc:s.view==='acessos'?'on':'',
+      isLista:s.view==='lista', isFicha:s.view==='ficha', isVenc:s.view==='vencimentos', isRel:s.view==='relatorios', isAcc:s.view==='acessos',
+      goAcc:()=>this.setState({view:'acessos'}), noop:()=>{},
+      perfis:acc.perfis, modulos:acc.modulos, matriz:acc.matriz, usuarios, perfilNomes:acc.perfilNomes,
+      pessoas, nPessoas:pessoas.length, total:this._p.length, totalAlert,
+      hasResults:pessoas.length>0, noResults:pessoas.length===0,
+      lotOpts, sitOpts, q:s.q, fLot:s.fLot, fSit:s.fSit,
+      onSearch:e=>this.setState({q:e.target.value}),
+      onLot:e=>this.setState({fLot:e.target.value}),
+      onSit:e=>this.setState({fSit:e.target.value}),
+      limpar:()=>this.setState({q:'',fLot:'',fSit:''}),
+      goLista:()=>this.setState({view:'lista'}), goVenc:()=>this.setState({view:'vencimentos'}), goRel:()=>this.setState({view:'relatorios'}),
+      voltar:()=>this.setState({view:'lista'}),
+      selected,
+      tabCursos:s.fichaTab==='cursos', tabHab:s.fichaTab==='habilitacoes', tabEst:s.fichaTab==='estagios',
+      tabCursosCls:s.fichaTab==='cursos'?'on':'', tabHabCls:s.fichaTab==='habilitacoes'?'on':'', tabEstCls:s.fichaTab==='estagios'?'on':'',
+      setCursos:()=>this.setState({fichaTab:'cursos'}), setHab:()=>this.setState({fichaTab:'habilitacoes'}), setEst:()=>this.setState({fichaTab:'estagios'}),
+      venc, vVencidos, vVencendo,
+      porLot, porSit, porPosto
+    };
+  }
+}
+</script>
+</body>
+</html>

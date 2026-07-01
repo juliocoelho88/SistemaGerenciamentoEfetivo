@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gestao-efetivo
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gestao_efetivo
+    username: gestao_efetivo
+    password: gestao_efetivo
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  jwt:
+    # Segredo usado para assinar os tokens — troque por um valor forte via variável de ambiente APP_JWT_SECRET em produção.
+    secret: ${APP_JWT_SECRET:trocar-este-segredo-em-producao-precisa-ter-pelo-menos-256-bits}
+    expiracao-minutos: 480

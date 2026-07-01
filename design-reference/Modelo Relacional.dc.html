@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics=""><meta name="design_doc_mode" content="canvas"><style>@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');*{box-sizing:border-box}body{margin:0;background:#eef1f5;font-family:'Public Sans',system-ui,sans-serif;color:#16202e}.doc{padding:34px 40px 60px}.dochead{margin-bottom:22px}.doctitle{font-size:23px;font-weight:700}.docsub{font-size:14px;color:#5b6675;margin-top:4px}.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:16px;align-items:center}.leg{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#37414f}.legdot{width:12px;height:12px;border-radius:3px}.legnote{font-size:12.5px;color:#7a8696;margin-left:auto}.erwrap{position:relative}.erlines{position:absolute;left:0;top:0;pointer-events:none;z-index:1}.erpath{fill:none;stroke:#9aa7ba;stroke-width:1.6}.card-txt{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;fill:#5b6675}.ent{position:absolute;z-index:2;background:#fff;border:1px solid #d3dae4;border-radius:10px;box-shadow:0 3px 10px rgba(20,35,59,.07);overflow:hidden}.enthead{padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;color:#fff;letter-spacing:.02em}.dom-nucleo .enthead{background:#2f5fd0}.dom-form .enthead{background:#1f8a5b}.dom-acesso .enthead{background:#7c4dd6}.dom-apoio .enthead{background:#64748b}.dom-nucleo{border-color:#b9cbee}.dom-form{border-color:#b2ddc7}.dom-acesso{border-color:#d3c4f2}.dom-apoio{border-color:#cbd3dd}.entrow{display:flex;align-items:center;gap:8px;padding:5px 12px;border-top:1px solid #f0f2f5;height:23px}.entrow.pk{background:#fffdf3}.entrow.fk{background:#f6f9ff}.kb{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;width:24px;text-align:center;padding:1px 0;border-radius:4px;flex:none;letter-spacing:.02em}.kb-pk{background:#f2c94c;color:#6b4e00}.kb-fk{background:#dbe6fb;color:#2f5fd0}.kb-uk{background:#e6e9ee;color:#5b6675}.kb-none{background:transparent;color:transparent}.cname{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:#16202e}.ctype{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#93a0b2;font-weight:500}</style></helmet>
+<div class="doc">
+<div class="dochead"><div class="doctitle">Modelo Relacional — Sistema de Gestão de Efetivo</div><div class="docsub">Esquema do banco (backend Java). Cada tabela e coluna é clicável para comentários. FK em azul, PK em dourado.</div>
+<div class="legend"><div class="leg"><span class="legdot" style="background:#2f5fd0"></span>Núcleo</div><div class="leg"><span class="legdot" style="background:#1f8a5b"></span>Formação</div><div class="leg"><span class="legdot" style="background:#7c4dd6"></span>Acesso</div><div class="leg"><span class="legdot" style="background:#64748b"></span>Tabelas de apoio</div><div class="legnote">Relações 1:N — “1” no lado pai, “N” no lado da chave estrangeira</div></div></div>
+<div class="erwrap" style="{{ canvasStyle }}">
+<svg class="erlines" width="{{ cw }}" height="{{ ch }}" viewBox="0 0 {{ cw }} {{ ch }}"><sc-for list="{{ links }}" as="c" hint-placeholder-count="15"><path class="erpath" d="{{ c.d }}"></path></sc-for><sc-for list="{{ links }}" as="c" hint-placeholder-count="15"><text class="card-txt" x="{{ c.oneX }}" y="{{ c.oneY }}">1</text><text class="card-txt" x="{{ c.manyX }}" y="{{ c.manyY }}">N</text></sc-for></svg>
+<sc-for list="{{ entities }}" as="e" hint-placeholder-count="13"><div class="ent {{ e.domCls }}" style="{{ e.style }}"><div class="enthead">{{ e.title }}</div><sc-for list="{{ e.cols }}" as="c" hint-placeholder-count="5"><div class="entrow {{ c.rowCls }}"><span class="kb {{ c.badgeCls }}">{{ c.badge }}</span><span class="cname">{{ c.name }}</span><span class="ctype">{{ c.type }}</span></div></sc-for></div></sc-for>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  model(){
+    const E=[
+      {id:'posto_graduacao',title:'posto_graduacao',domain:'apoio',x:40,y:50,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['abreviacao','VARCHAR',''],['ordem_hierarquica','INT',''],['circulo','ENUM','']]},
+      {id:'situacao_funcional',title:'situacao_funcional',domain:'apoio',x:40,y:250,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['disponivel_operacao','BOOLEAN','']]},
+      {id:'unidade',title:'unidade',domain:'apoio',x:40,y:410,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['sigla','VARCHAR','UK'],['tipo','ENUM',''],['unidade_pai_id','BIGINT','FK']]},
+      {id:'pessoa',title:'pessoa',domain:'nucleo',x:440,y:70,cols:[['id','BIGINT','PK'],['re','VARCHAR(9)','UK'],['nome','VARCHAR',''],['cpf','VARCHAR','UK'],['data_nascimento','DATE',''],['sexo','ENUM',''],['foto_url','VARCHAR',''],['data_praca','DATE',''],['posto_id','BIGINT','FK'],['unidade_id','BIGINT','FK'],['situacao_id','BIGINT','FK'],['telefone','VARCHAR',''],['email','VARCHAR',''],['criado_em','TIMESTAMP','']]},
+      {id:'curso',title:'curso',domain:'form',x:1215,y:60,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['instituicao','VARCHAR',''],['carga_horaria','INT',''],['exige_validade','BOOLEAN',''],['validade_meses','INT','']]},
+      {id:'pessoa_curso',title:'pessoa_curso',domain:'form',x:825,y:40,cols:[['id','BIGINT','PK'],['pessoa_id','BIGINT','FK'],['curso_id','BIGINT','FK'],['data_conclusao','DATE',''],['data_validade','DATE',''],['certificado_url','VARCHAR',''],['status','ENUM','']]},
+      {id:'habilitacao',title:'habilitacao',domain:'form',x:1215,y:330,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['categoria','VARCHAR',''],['exige_validade','BOOLEAN',''],['orgao_emissor','VARCHAR',''],['validade_meses','INT','']]},
+      {id:'pessoa_habilitacao',title:'pessoa_habilitacao',domain:'form',x:825,y:300,cols:[['id','BIGINT','PK'],['pessoa_id','BIGINT','FK'],['habilitacao_id','BIGINT','FK'],['numero','VARCHAR',''],['data_emissao','DATE',''],['data_validade','DATE',''],['status','ENUM','']]},
+      {id:'pessoa_estagio',title:'pessoa_estagio',domain:'form',x:825,y:560,cols:[['id','BIGINT','PK'],['pessoa_id','BIGINT','FK'],['nome','VARCHAR',''],['unidade_id','BIGINT','FK'],['supervisor','VARCHAR',''],['data_inicio','DATE',''],['data_fim','DATE',''],['avaliacao','VARCHAR',''],['status','ENUM','']]},
+      {id:'perfil',title:'perfil',domain:'acesso',x:110,y:880,cols:[['id','BIGINT','PK'],['nome','VARCHAR','UK'],['descricao','TEXT','']]},
+      {id:'perfil_permissao',title:'perfil_permissao',domain:'acesso',x:470,y:895,cols:[['id','BIGINT','PK'],['perfil_id','BIGINT','FK'],['modulo_id','BIGINT','FK'],['nivel','ENUM','']]},
+      {id:'modulo',title:'modulo',domain:'acesso',x:830,y:880,cols:[['id','BIGINT','PK'],['nome','VARCHAR',''],['chave','VARCHAR','UK']]},
+      {id:'usuario',title:'usuario',domain:'acesso',x:440,y:600,cols:[['id','BIGINT','PK'],['pessoa_id','BIGINT','FK'],['login','VARCHAR','UK'],['senha_hash','VARCHAR',''],['perfil_id','BIGINT','FK'],['escopo_unidade_id','BIGINT','FK'],['ativo','BOOLEAN',''],['ultimo_acesso','TIMESTAMP','']]}
+    ];
+    const HEAD=34,ROW=23,PADB=6,W=250;
+    const domMap={nucleo:'dom-nucleo',form:'dom-form',acesso:'dom-acesso',apoio:'dom-apoio'};
+    E.forEach(e=>{ e.w=W; e.h=HEAD+e.cols.length*ROW+PADB; e.domCls=domMap[e.domain]; e.style=`left:${e.x}px;top:${e.y}px;width:${W}px`;
+      e.cols=e.cols.map(c=>({ name:c[0], type:c[1], badge:c[2]||'', badgeCls:c[2]?('kb-'+c[2].toLowerCase()):'kb-none', rowCls:c[2]==='PK'?'pk':(c[2]==='FK'?'fk':'') })); });
+    return E;
+  }
+
+  renderVals(){
+    const E=this.model();
+    const G={}; E.forEach(e=>{ G[e.id]={x:e.x,y:e.y,w:e.w,h:e.h}; });
+    const anc=(id,s,f)=>{ const b=G[id]; if(s==='l')return[b.x,b.y+b.h*f]; if(s==='r')return[b.x+b.w,b.y+b.h*f]; if(s==='t')return[b.x+b.w*f,b.y]; return[b.x+b.w*f,b.y+b.h]; };
+    const ctl=(p,s,o)=>{ o=o||64; if(s==='l')return[p[0]-o,p[1]]; if(s==='r')return[p[0]+o,p[1]]; if(s==='t')return[p[0],p[1]-o]; return[p[0],p[1]+o]; };
+    const lab=(p,c)=>{ const dx=c[0]-p[0],dy=c[1]-p[1],m=Math.hypot(dx,dy)||1; return [p[0]+dx/m*20, p[1]+dy/m*20+4]; };
+    const rels=[
+      ['posto_graduacao','r',.5,'pessoa','l',.60],
+      ['situacao_funcional','r',.5,'pessoa','l',.70],
+      ['unidade','r',.4,'pessoa','l',.80],
+      ['pessoa','r',.18,'pessoa_curso','l',.5],
+      ['pessoa','r',.45,'pessoa_habilitacao','l',.5],
+      ['pessoa','r',.72,'pessoa_estagio','l',.32],
+      ['curso','l',.5,'pessoa_curso','r',.5],
+      ['habilitacao','l',.5,'pessoa_habilitacao','r',.5],
+      ['unidade','b',.5,'pessoa_estagio','l',.72],
+      ['pessoa','b',.5,'usuario','t',.5],
+      ['perfil','t',.4,'usuario','b',.32],
+      ['unidade','b',.15,'usuario','l',.35],
+      ['perfil','r',.5,'perfil_permissao','l',.5],
+      ['modulo','l',.5,'perfil_permissao','r',.5],
+      ['unidade','t',.8,'unidade','r',.12]
+    ];
+    const links=rels.map(r=>{
+      const a=anc(r[0],r[1],r[2]), b=anc(r[3],r[4],r[5]);
+      const ca=ctl(a,r[1]), cb=ctl(b,r[4]);
+      const l1=lab(a,ca), lN=lab(b,cb);
+      return { d:`M${a[0]} ${a[1]} C ${ca[0]} ${ca[1]} ${cb[0]} ${cb[1]} ${b[0]} ${b[1]}`, oneX:l1[0], oneY:l1[1], manyX:lN[0], manyY:lN[1] };
+    });
+    const cw=1500, ch=1080;
+    return { entities:E, links, cw, ch, canvasStyle:`width:${cw}px;height:${ch}px` };
+  }
+}
+</script>
+</body>
+</html>
