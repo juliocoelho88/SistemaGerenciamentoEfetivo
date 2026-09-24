@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Pessoa {
 
+    /**
+     * Ids alocados em blocos de 50 (SEQUENCE + optimizer pooled) em vez de IDENTITY: com IDENTITY o
+     * Hibernate precisa do id de volta a cada linha e desliga o batch de INSERT, o que inviabiliza a
+     * importação em massa de planilhas. O allocationSize precisa continuar igual ao INCREMENT BY da
+     * sequence (ver V3__sequencia_pessoa_em_lote.sql).
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_seq")
+    @SequenceGenerator(name = "pessoa_seq", sequenceName = "pessoa_id_seq", allocationSize = 50)
     private Long id;
 
     /** Formato XXX.XXX-D — validado também no DTO com @Pattern; o CHECK do banco é a garantia final. */
