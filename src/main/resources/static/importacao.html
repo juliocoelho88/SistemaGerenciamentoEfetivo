@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Importar efetivo · Gestão de Efetivo</title>
+<link rel="stylesheet" href="css/importacao.css">
+</head>
+<body>
+
+<!-- ===== Login: a API exige token, entao a tela pede o acesso antes de qualquer coisa ===== -->
+<div class="telalogin" id="telaLogin">
+    <div class="card cardlogin">
+        <div class="brandbox">
+            <div class="brandmark">GE</div>
+            <div>
+                <div class="brandname">Gestão de Efetivo</div>
+                <div class="brandsub">Importação de efetivo</div>
+            </div>
+        </div>
+        <form id="formLogin">
+            <div class="campo">
+                <label for="login">Usuário</label>
+                <input class="inp" type="text" id="login" name="login" autocomplete="username" required autofocus>
+            </div>
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input class="inp" type="password" id="senha" name="senha" autocomplete="current-password" required>
+            </div>
+            <button class="btn btn-primario" type="submit" id="btnEntrar">Entrar</button>
+            <p class="erroform oculto" id="erroLogin" role="alert"></p>
+        </form>
+    </div>
+</div>
+
+<!-- ===== Tela de importacao ===== -->
+<div class="app oculto" id="telaApp">
+    <aside class="sidebar">
+        <div class="brandbox">
+            <div class="brandmark">GE</div>
+            <div>
+                <div class="brandname">Gestão de Efetivo</div>
+                <div class="brandsub">Polícia · Pessoal</div>
+            </div>
+        </div>
+        <div class="navlabel">Menu</div>
+        <span class="navitem on">
+            <svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12"></path><path d="M7.5 10.5L12 15l4.5-4.5"></path>
+                <path d="M4 17.5V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5"></path>
+            </svg>
+            Importar efetivo
+        </span>
+        <div class="sidefoot">
+            <div class="brandmark" style="width:32px;height:32px;font-size:12px" id="iniciaisUsuario">AD</div>
+            <div>
+                <div class="fname" id="nomeUsuario">—</div>
+                <button class="brandsub" id="btnSair" type="button"
+                        style="background:none;border:0;padding:0;cursor:pointer;color:#7e8ca6;font-family:inherit">Sair</button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <div>
+                <div class="ttitle">Importar efetivo</div>
+                <div class="tsub">Cadastre o efetivo em massa a partir das planilhas de Excel</div>
+            </div>
+            <button class="btn" type="button" id="btnModelo" style="margin-left:auto">Baixar planilha modelo</button>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <!-- Passo 1 -->
+                <div class="panel">
+                    <h2 class="passo"><span class="passonum">1</span><span class="passotitulo">Escolha as planilhas</span></h2>
+                    <p class="passoajuda">Aceita <strong>.xlsx</strong> e <strong>.xls</strong>. Pode mandar várias de uma vez —
+                        por exemplo, uma por companhia.</p>
+
+                    <div class="dropzone" id="dropzone" role="button" tabindex="0"
+                         aria-label="Escolher planilhas ou arrastar arquivos para cá">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 16V4"></path><path d="M7.5 8.5L12 4l4.5 4.5"></path>
+                            <path d="M4 16v2.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V16"></path>
+                        </svg>
+                        <strong>Arraste as planilhas para cá</strong>
+                        <span>ou clique para escolher no computador</span>
+                    </div>
+                    <input type="file" id="arquivos" accept=".xlsx,.xls" multiple class="oculto">
+
+                    <ul class="listaarquivos" id="listaArquivos"></ul>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="panel">
+                    <h2 class="passo"><span class="passonum">2</span><span class="passotitulo">Ajuste as opções</span></h2>
+                    <p class="passoajuda">Os padrões abaixo só são usados quando a planilha não traz a coluna correspondente.</p>
+
+                    <div class="campos">
+                        <div class="campo">
+                            <label for="unidadePadrao">Unidade padrão <span class="dica">— se a planilha não tiver coluna de unidade</span></label>
+                            <select class="sel" id="unidadePadrao">
+                                <option value="">A planilha informa a unidade</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="situacaoPadrao">Situação padrão <span class="dica">— se a planilha não tiver coluna de situação</span></label>
+                            <select class="sel" id="situacaoPadrao"></select>
+                        </div>
+                    </div>
+
+                    <div class="checkline">
+                        <input type="checkbox" id="atualizarExistentes">
+                        <div>
+                            <label for="atualizarExistentes">Atualizar quem já está cadastrado</label>
+                            <span class="dica">Se o RE já existir, os dados da planilha substituem os do sistema.
+                                Desmarcado, esses registros são apenas ignorados.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="panel">
+                    <h2 class="passo"><span class="passonum">3</span><span class="passotitulo">Confira antes de gravar</span></h2>
+                    <p class="passoajuda">Simule primeiro: a conferência mostra tudo que seria recusado
+                        <strong>sem gravar nada</strong> no sistema.</p>
+
+                    <div class="acoes">
+                        <button class="btn" type="button" id="btnSimular" disabled>Conferir sem gravar</button>
+                        <button class="btn btn-primario" type="button" id="btnImportar" disabled>Importar de verdade</button>
+                        <button class="btn btn-fantasma oculto" type="button" id="btnLimpar">Limpar</button>
+                    </div>
+                    <p class="erroform oculto" id="erroEnvio" role="alert"></p>
+                </div>
+            </div>
+
+            <!-- Resultado -->
+            <section id="resultado" class="oculto" style="margin-top:22px" aria-live="polite"></section>
+        </div>
+    </main>
+</div>
+
+<script src="js/importacao.js"></script>
+</body>
+</html>
