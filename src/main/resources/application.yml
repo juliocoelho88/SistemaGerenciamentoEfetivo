@@ -3,9 +3,16 @@ spring:
     name: gestao-efetivo
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/gestao_efetivo
+    # reWriteBatchedInserts: o driver reescreve N INSERTs em um unico INSERT ... VALUES (...),(...) —
+    # e o que da o ganho real na importacao em massa de planilhas.
+    url: jdbc:postgresql://localhost:5432/gestao_efetivo?reWriteBatchedInserts=true
     username: gestao_efetivo
     password: gestao_efetivo
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
 
   jpa:
     hibernate:
@@ -14,6 +21,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        jdbc:
+          batch_size: 500
+        order_inserts: true
+        order_updates: true
 
   flyway:
     enabled: true

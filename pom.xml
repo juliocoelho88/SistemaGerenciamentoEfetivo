@@ -90,6 +90,13 @@
             <version>2.6.0</version>
         </dependency>
 
+        <!-- Leitura/escrita das planilhas (.xlsx e .xls) da importacao em massa -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+
         <!-- ===== Testes ===== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
