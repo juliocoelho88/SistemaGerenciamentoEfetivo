@@ -11,6 +11,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -50,6 +51,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<ApiError> handleAcessoNegado(AccessDeniedException ex, HttpServletRequest req) {
         return build(HttpStatus.FORBIDDEN, "Acesso negado para este recurso.", req, List.of());
+    }
+
+    /**
+     * Sem isto o catch-all abaixo transforma um arquivo estatico inexistente em 500 com stack trace:
+     * o /favicon.ico que todo navegador pede sujava o log a cada acesso as telas e escondia erro real.
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ApiError> handleEstaticoNaoEncontrado(NoResourceFoundException ex, HttpServletRequest req) {
+        return build(HttpStatus.NOT_FOUND, "Recurso não encontrado.", req, List.of());
     }
 
     @ExceptionHandler(Exception.class)

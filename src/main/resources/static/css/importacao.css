@@ -1,0 +1,259 @@
+/* Tokens tirados do prototipo em design-reference/ para a tela nao destoar do resto do sistema. */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --accent: #2f5fd0;
+    --fundo: #f5f6f8;
+    --texto: #16202e;
+    --texto-fraco: #5b6675;
+    --texto-sutil: #7a8696;
+    --borda: #e6e9ee;
+    --borda-campo: #dfe3ea;
+    --sidebar: #14233b;
+    --ok: #15803d;
+    --alerta: #b06a12;
+    --erro: #c2453a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-size: 14px;
+}
+
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.app { min-height: 100vh; display: flex; }
+
+/* ---------- Barra lateral ---------- */
+
+.sidebar {
+    width: 240px;
+    flex: none;
+    background: var(--sidebar);
+    color: #cdd6e4;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 20px 14px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.brandbox { display: flex; align-items: center; gap: 11px; padding: 6px 8px 18px; }
+
+.brandmark {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; flex: none;
+}
+
+.brandname { font-weight: 700; font-size: 15px; color: #fff; line-height: 1.15; }
+.brandsub { font-size: 11px; color: #7e8ca6; }
+
+.navlabel {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+    color: #6b7a96; padding: 14px 10px 6px; font-weight: 600;
+}
+
+.navitem {
+    display: flex; align-items: center; gap: 11px;
+    padding: 9px 11px; border-radius: 9px;
+    color: #9fb0c8; font-weight: 500; font-size: 14px;
+    background: none; border: 0; text-align: left; width: 100%;
+    font-family: inherit; text-decoration: none;
+}
+
+.navitem.on { background: var(--accent); color: #fff; }
+.navicon { width: 19px; height: 19px; flex: none; }
+
+.sidefoot {
+    margin-top: auto; display: flex; align-items: center; gap: 10px;
+    padding: 12px 8px 4px; border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.fname { color: #e6ecf5; font-weight: 600; font-size: 13px; }
+
+/* ---------- Estrutura ---------- */
+
+.main { flex: 1; height: 100vh; overflow: auto; }
+
+.topbar {
+    position: sticky; top: 0; z-index: 5;
+    background: #fff; border-bottom: 1px solid var(--borda);
+    padding: 17px 30px; display: flex; align-items: center; gap: 18px;
+}
+
+.ttitle { font-size: 19px; font-weight: 700; }
+.tsub { font-size: 13px; color: var(--texto-fraco); margin-top: 2px; }
+.content { padding: 24px 30px 60px; max-width: 1100px; }
+
+.card {
+    background: #fff; border: 1px solid var(--borda); border-radius: 13px;
+    box-shadow: 0 1px 2px rgba(20, 35, 59, .04); overflow: hidden;
+}
+
+.panel { padding: 20px 22px; }
+.panel + .panel { border-top: 1px solid #f0f2f5; }
+
+.passo { display: flex; align-items: baseline; gap: 9px; margin: 0 0 14px; }
+
+.passonum {
+    width: 21px; height: 21px; border-radius: 50%; flex: none;
+    background: #e8f0fd; color: var(--accent);
+    font-size: 12px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    transform: translateY(2px);
+}
+
+.passotitulo { font-size: 15px; font-weight: 700; }
+.passoajuda { font-size: 13px; color: var(--texto-fraco); margin: -8px 0 14px 30px; }
+
+/* ---------- Area de arrastar arquivos ---------- */
+
+.dropzone {
+    border: 2px dashed #ccd4e0; border-radius: 12px;
+    padding: 34px 20px; text-align: center;
+    background: #fafbfc; cursor: pointer;
+    transition: border-color .15s, background .15s;
+}
+
+.dropzone:hover, .dropzone:focus-visible { border-color: var(--accent); background: #f5f8ff; }
+.dropzone.arrastando { border-color: var(--accent); background: #eaf1fe; }
+.dropzone svg { width: 34px; height: 34px; color: #9aa7b8; margin-bottom: 8px; }
+.dropzone strong { display: block; font-size: 15px; margin-bottom: 3px; }
+.dropzone span { font-size: 13px; color: var(--texto-fraco); }
+
+.listaarquivos { list-style: none; margin: 14px 0 0; padding: 0; }
+
+.listaarquivos li {
+    display: flex; align-items: center; gap: 11px;
+    padding: 9px 12px; border: 1px solid var(--borda);
+    border-radius: 9px; margin-bottom: 7px; background: #fff;
+}
+
+.arqnome { font-weight: 600; font-size: 13.5px; }
+.arqtam { font-size: 12px; color: var(--texto-sutil); margin-left: auto; }
+
+.remover {
+    border: 0; background: none; color: var(--texto-sutil);
+    cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 6px;
+}
+
+.remover:hover { background: #f2f4f7; color: var(--erro); }
+
+/* ---------- Formulario ---------- */
+
+.campos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.campo { display: flex; flex-direction: column; gap: 5px; }
+.campo label { font-size: 12.5px; font-weight: 600; color: #37414f; }
+.campo .dica { font-size: 12px; color: var(--texto-sutil); font-weight: 400; }
+
+.sel, .inp {
+    padding: 9px 11px; border: 1px solid var(--borda-campo); border-radius: 9px;
+    font-size: 14px; font-family: inherit; background: #fff; color: var(--texto);
+}
+
+.sel:focus, .inp:focus { outline: none; border-color: var(--accent); }
+
+.checkline { display: flex; align-items: flex-start; gap: 9px; margin-top: 16px; }
+.checkline input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--accent); }
+.checkline label { font-size: 13.5px; font-weight: 600; }
+.checkline .dica { font-size: 12.5px; color: var(--texto-fraco); font-weight: 400; display: block; margin-top: 2px; }
+
+/* ---------- Botoes ---------- */
+
+.acoes { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+    padding: 10px 15px; border: 1px solid var(--borda-campo); border-radius: 9px;
+    background: #fff; font-size: 13.5px; font-weight: 600; font-family: inherit;
+    color: #37414f; cursor: pointer;
+}
+
+.btn:hover:not(:disabled) { background: #f2f4f7; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primario { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primario:hover:not(:disabled) { background: #2951b4; }
+.btn-fantasma { border: 0; background: none; color: var(--texto-fraco); }
+.btn-fantasma:hover:not(:disabled) { background: #f2f4f7; }
+
+/* ---------- Resultado ---------- */
+
+.statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.stat { padding: 16px 18px; }
+.statk { font-size: 12px; color: var(--texto-sutil); font-weight: 500; }
+.statv { font-size: 26px; font-weight: 700; margin-top: 4px; }
+.statv.ok { color: var(--ok); }
+.statv.warn { color: var(--alerta); }
+.statv.bad { color: var(--erro); }
+
+.aviso {
+    display: flex; gap: 11px; align-items: flex-start;
+    padding: 13px 16px; border-radius: 10px; font-size: 13.5px; margin-bottom: 18px;
+}
+
+.aviso-info { background: #e8f0fd; color: #1c3d87; }
+.aviso-ok { background: #e6f5ec; color: #14532d; }
+.aviso-erro { background: #fde8e6; color: #8c2f27; }
+.aviso strong { display: block; margin-bottom: 2px; }
+
+.arquivotitulo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 14.5px; margin-bottom: 10px;
+}
+
+.resumolinha { font-size: 13px; color: var(--texto-fraco); margin-bottom: 12px; }
+
+.chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 9px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; white-space: nowrap;
+}
+
+.chip-ok { background: #e6f5ec; color: var(--ok); }
+.chip-warn { background: #fdf2e2; color: var(--alerta); }
+.chip-bad { background: #fde8e6; color: var(--erro); }
+.chip-neutral { background: #eef0f3; color: var(--texto-fraco); }
+
+.ptable { width: 100%; border-collapse: collapse; }
+
+.ptable th {
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--texto-sutil); font-weight: 600; padding: 11px 16px;
+    border-bottom: 1px solid #eceef2;
+}
+
+.ptable td { padding: 10px 16px; border-bottom: 1px solid #f0f2f5; font-size: 13.5px; vertical-align: top; }
+.ptable tr:last-child td { border-bottom: 0; }
+.colnum { width: 70px; }
+
+/* ---------- Login ---------- */
+
+.telalogin { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.cardlogin { width: 100%; max-width: 380px; padding: 30px 28px; }
+.cardlogin .brandbox { padding: 0 0 20px; }
+.cardlogin .brandname { color: var(--texto); }
+.cardlogin .brandsub { color: var(--texto-sutil); }
+.cardlogin .campo { margin-bottom: 14px; }
+.cardlogin .btn { width: 100%; justify-content: center; margin-top: 6px; }
+
+.erroform { color: var(--erro); font-size: 13px; font-weight: 600; margin-top: 12px; }
+
+.oculto { display: none !important; }
+
+.carregando { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.4);
+    border-top-color: #fff; border-radius: 50%; animation: girar .7s linear infinite; vertical-align: -2px; margin-right: 7px; }
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+@media (max-width: 860px) {
+    .sidebar { display: none; }
+    .campos, .statgrid { grid-template-columns: 1fr 1fr; }
+    .content, .topbar { padding-left: 16px; padding-right: 16px; }
+}
