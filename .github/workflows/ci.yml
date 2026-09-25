@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+# Um push novo no mesmo branch cancela o build anterior, que ja esta obsoleto.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Testes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: temurin
+          # Guarda o ~/.m2 entre execucoes: sem isto cada build baixa as dependencias
+          # do zero a cada vez.
+          cache: maven
+
+      - name: mvn test
+        run: mvn --batch-mode --no-transfer-progress test
+
+      - name: Publicar relatorio dos testes
+        # Roda mesmo com o build vermelho — e justamente quando o relatorio importa.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 7
